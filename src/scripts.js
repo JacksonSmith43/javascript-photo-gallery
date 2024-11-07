@@ -8,10 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentImageIndex = 0;
 
-  images.forEach((element) => {
+  images.forEach((element, index) => {
     element.addEventListener("click", () => {
+      currentImageIndex = index;
       modal.classList.remove("hidden");
-      modalImage.src = element.src;
+      modalImage.src = element.src; // The selected image. 
+      console.log("currentImageIndex: ", currentImageIndex);
     });
   });
 
@@ -20,10 +22,23 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.add("hidden");
   }
 
+  nextBtn.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    modalImage.src = images[currentImageIndex].src;
+    console.log("currentImageIndex: ", currentImageIndex);
+    console.log("modalImage.src : ", modalImage.src );
 
+  })
 
-  // TODO: (Issue #2) Add event listeners for the prevBtn and nextBtn for modal navigation functionality
-  // Clean Code Hint: Issue #1 and #2 both deal with updating the modal image based on currentImageIndex. Consider creating a function to handle this functionality.
+  prevBtn.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    modalImage.src = images[currentImageIndex].src;
+    console.log("currentImageIndex: ", currentImageIndex);
+
+    if (currentImageIndex === 0) {
+      currentImageIndex = images.length;
+    }
+  });
 
   // TODO: (Issue #3) Add an event listener for the closeBtn to close the modal
 
