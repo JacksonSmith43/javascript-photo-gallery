@@ -21,6 +21,10 @@ body {
   border-radius: 0.5rem;
 }
 
+#controller-image:hover {
+  opacity: 0.7;
+}
+
 @media (min-width: 768px) {
   .gallery {
     grid-template-columns: repeat(4, 1fr);
@@ -52,15 +56,17 @@ body {
   display: block;
 }
 
+
 .close {
   position: absolute;
-  top: 15px;
-  right: 25px;
+  top: 4rem;
+  right: 2rem;
   color: white;
-  font-size: 28px;
+  font-size: 4rem;
   font-weight: bold;
   cursor: pointer;
 }
+
 .nav-btn {
   position: absolute;
   top: 50%;
