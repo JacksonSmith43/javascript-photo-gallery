@@ -13,7 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
       currentImageIndex = index;
       modal.classList.remove("hidden");
       modalImage.src = element.src; // The selected image. 
-      console.log("currentImageIndex: ", currentImageIndex);
+      console.log("currentImageIndex of clicked image: ", currentImageIndex);
+
+      checksCurrentImageIndexState(currentImageIndex, images.length);
+
     });
 
   });
@@ -33,25 +36,36 @@ document.addEventListener("DOMContentLoaded", () => {
   nextBtn.addEventListener("click", () => {
     currentImageIndex = (currentImageIndex + 1) % images.length;
     modalImage.src = images[currentImageIndex].src;
-    console.log("currentImageIndex: ", currentImageIndex);
+    console.log("currentImageIndex of nextBtn: ", currentImageIndex);
     console.log("modalImage.src : ", modalImage.src);
 
+    checksCurrentImageIndexState(currentImageIndex, images.length);
   })
 
   prevBtn.addEventListener("click", () => {
     currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
     modalImage.src = images[currentImageIndex].src;
-    console.log("currentImageIndex: ", currentImageIndex);
+    console.log("currentImageIndex of prevBtn: ", currentImageIndex);
 
-    if (currentImageIndex === 0) {
-      currentImageIndex = images.length;
-    }
+    checksCurrentImageIndexState(currentImageIndex, images.length);
   });
 
-  // TODO: (Issue #3) Add an event listener for the closeBtn to close the modal
-  // TODO: (Issue #3) Add an event listener to close the modal when clicking the modal background
-
-
-
-  // TODO: (Issue #4) Create a function to update the state of the navigation buttons based on currentImageIndex
 });
+
+function checksCurrentImageIndexState(currentImageIndex, imageLength) {
+
+  if (currentImageIndex >= imageLength - 1) {
+    nextBtn.setAttribute('disabled', '');
+
+  } else {
+    nextBtn.removeAttribute('disabled', '');
+  }
+
+  if (currentImageIndex <= 0) {
+    prevBtn.setAttribute('disabled', '');
+
+  } else {
+    prevBtn.removeAttribute('disabled', '');
+  }
+
+}
