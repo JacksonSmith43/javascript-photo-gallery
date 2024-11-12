@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       modalImage.src = element.src; // The selected image. 
       console.log("currentImageIndex: ", currentImageIndex);
     });
+
   });
 
 
@@ -22,11 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.add("hidden");
   }
 
+  window.onclick = function (event) { // When clicking anywhere but the picture, it closes the modal window. 
+    if (event.target === modal) {
+      modal.classList.add("hidden");
+    }
+
+  }
+
   nextBtn.addEventListener("click", () => {
     currentImageIndex = (currentImageIndex + 1) % images.length;
     modalImage.src = images[currentImageIndex].src;
     console.log("currentImageIndex: ", currentImageIndex);
-    console.log("modalImage.src : ", modalImage.src );
+    console.log("modalImage.src : ", modalImage.src);
 
   })
 
@@ -41,8 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // TODO: (Issue #3) Add an event listener for the closeBtn to close the modal
-
   // TODO: (Issue #3) Add an event listener to close the modal when clicking the modal background
+
+
 
   // TODO: (Issue #4) Create a function to update the state of the navigation buttons based on currentImageIndex
 });

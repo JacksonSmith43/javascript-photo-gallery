@@ -43,6 +43,7 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
+  
 }
 
 .hidden {
@@ -54,6 +55,7 @@ body {
   max-height: 90%;
   margin: auto;
   display: block;
+  
 }
 
 
@@ -65,6 +67,7 @@ body {
   font-size: 4rem;
   font-weight: bold;
   cursor: pointer;
+  
 }
 
 .nav-btn {
